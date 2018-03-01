@@ -19,7 +19,9 @@ public class InputReader {
 
 			Iterator<String> iterator = lines.iterator();
 
-			// TODO read input file
+			while (iterator.hasNext()) {
+				System.out.println(iterator.next());
+			}
 
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Error while parsing input data", e);
