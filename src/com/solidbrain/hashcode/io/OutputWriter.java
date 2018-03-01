@@ -6,9 +6,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.solidbrain.hashcode.Solution;
+
 public class OutputWriter {
 
-	public void writeToFile(String fileName) {
+	public void writeToFile(String fileName, Solution solution) {
 		List<String> lines = new ArrayList<>();
 
 		// TODO all the logic

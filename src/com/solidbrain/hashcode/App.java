@@ -3,24 +3,22 @@ package com.solidbrain.hashcode;
 import java.util.List;
 
 import com.solidbrain.hashcode.io.InputReader;
-import com.solidbrain.hashcode.model.Configuration;
+import com.solidbrain.hashcode.io.OutputWriter;
 import com.solidbrain.hashcode.model.Ride;
 
 public class App {
 
-	private static final String PATH = "resource/input/a_example.in";
+	private static final String CASE_NAME = "a_example";
 
 	private InputReader inputReader = new InputReader();
+	private OutputWriter outputWriter = new OutputWriter();
+	private SolutionFinder solutionFinder;
 
 	public void process() {
-		List<Ride> rides = inputReader.read(PATH);
+		List<Ride> rides = inputReader.read("resource/input/" + CASE_NAME + ".in");
 
-		rides.forEach(ride -> {
-			System.out.println(ride);
-		});
+		Solution solution = solutionFinder.findSolution(rides);
 
-		System.out.println(Configuration.toString1());
-
+		outputWriter.writeToFile(CASE_NAME, solution);
 	}
-
 }
