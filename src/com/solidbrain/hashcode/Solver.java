@@ -4,9 +4,11 @@ import static com.solidbrain.hashcode.Util.getDistance;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import com.solidbrain.hashcode.model.Configuration;
@@ -25,7 +27,10 @@ public class Solver implements SolutionFinder {
 		}
 
 		for (int time = 0; time < Configuration.steps; time++) {
-			System.out.println("time " + time);
+			if (time % 2000 == 0) {
+				System.out.println("time " + time);
+			}
+
 			List<Vehicle> vehicles = getAvailableCars(time);
 			for (Vehicle car : vehicles) {
 				tryToFindRouteForVehicle(car, time);
@@ -57,14 +62,14 @@ public class Solver implements SolutionFinder {
 
 	//dont wait
 	private Ride findBest(Map<Ride, Double> scores) {
-		Ride found = null;
-		for (Ride ride : scores.keySet()) {
-			double score = scores.get(ride);
-			if (score > 0 && (found == null || score > scores.get(found))) {
-				found = ride;
-			}
+
+		Entry<Ride, Double> maxRide =
+				scores.entrySet().stream().max(Comparator.comparingDouble(Entry::getValue)).get();
+
+		if (maxRide.getValue() > 0) {
+			return maxRide.getKey();
 		}
-		return found;
+		return null;
 	}
 
 	private List<Vehicle> getAvailableCars(int time) {
