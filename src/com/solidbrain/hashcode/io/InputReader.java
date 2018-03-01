@@ -47,8 +47,8 @@ public class InputReader {
 	}
 
 	private Ride extractRide(String line) {
-		Point start = new Point(linesUtil.getFromLine(line, 1), linesUtil.getFromLine(line, 0));
-		Point end = new Point(linesUtil.getFromLine(line, 3), linesUtil.getFromLine(line, 2));
+		Point start = new Point(linesUtil.getFromLine(line, 0), linesUtil.getFromLine(line, 1));
+		Point end = new Point(linesUtil.getFromLine(line, 2), linesUtil.getFromLine(line, 3));
 
 		return new Ride(start, end, linesUtil.getFromLine(line, 4), linesUtil.getFromLine(line, 5));
 	}

@@ -16,4 +16,14 @@ public class Ride {
 		this.earliestStart = earliestStart;
 		this.latestFinish = latestFinish;
 	}
+
+	@Override
+	public String toString() {
+		return "Ride{" +
+				"start=" + start +
+				", end=" + end +
+				", earliestStart=" + earliestStart +
+				", latestFinish=" + latestFinish +
+				'}';
+	}
 }

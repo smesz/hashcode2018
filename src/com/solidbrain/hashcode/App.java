@@ -14,7 +14,9 @@ public class App {
 	public void process() {
 		List<Ride> rides = inputReader.read(PATH);
 
-
+		rides.forEach(ride -> {
+			System.out.println(ride);
+		});
 
 	}
 
