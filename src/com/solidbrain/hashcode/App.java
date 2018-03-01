@@ -3,6 +3,7 @@ package com.solidbrain.hashcode;
 import java.util.List;
 
 import com.solidbrain.hashcode.io.InputReader;
+import com.solidbrain.hashcode.model.Configuration;
 import com.solidbrain.hashcode.model.Ride;
 
 public class App {
@@ -17,6 +18,8 @@ public class App {
 		rides.forEach(ride -> {
 			System.out.println(ride);
 		});
+
+		System.out.println(Configuration.toString1());
 
 	}
 

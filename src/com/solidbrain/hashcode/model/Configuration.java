@@ -9,4 +9,8 @@ public class Configuration {
 	public static int bonus;
 	public static int steps;
 
+	public static String toString1() {
+		return "rows:" + rows + ", columns: " + columns + ", vehicles: " + vehicles + ", rides: " + rides + ", bonus: "
+				+ bonus + ", steps: " + steps;
+	}
 }
