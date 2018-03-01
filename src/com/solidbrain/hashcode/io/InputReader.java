@@ -33,10 +33,11 @@ public class InputReader {
 			Configuration.steps = linesUtil.getFromLine(line, 5);
 
 			List<Ride> rides = new ArrayList<>();
+			int index = 0;
 
 			while (iterator.hasNext()) {
 				line = iterator.next();
-				rides.add(extractRide(line));
+				rides.add(extractRide(line, index++));
 			}
 
 			return rides;
@@ -46,11 +47,11 @@ public class InputReader {
 		}
 	}
 
-	private Ride extractRide(String line) {
+	private Ride extractRide(String line, int index) {
 		Point start = new Point(linesUtil.getFromLine(line, 0), linesUtil.getFromLine(line, 1));
 		Point end = new Point(linesUtil.getFromLine(line, 2), linesUtil.getFromLine(line, 3));
 
-		return new Ride(start, end, linesUtil.getFromLine(line, 4), linesUtil.getFromLine(line, 5));
+		return new Ride(index, start, end, linesUtil.getFromLine(line, 4), linesUtil.getFromLine(line, 5));
 	}
 
 }
