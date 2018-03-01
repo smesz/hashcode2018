@@ -12,12 +12,13 @@ public class App {
 
 	private InputReader inputReader = new InputReader();
 	private OutputWriter outputWriter = new OutputWriter();
-	private SolutionFinder solutionFinder;
+	private SolutionFinder solutionFinder = new Solver();
 
 	public void process() {
 		List<Ride> rides = inputReader.read("resource/input/" + CASE_NAME + ".in");
 
 		Solution solution = solutionFinder.findSolution(rides);
+		System.out.println("points : " + new SolutionValidator().validate(solution));
 
 		outputWriter.writeToFile(CASE_NAME, solution);
 	}

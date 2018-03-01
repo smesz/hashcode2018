@@ -10,13 +10,14 @@ public class SolutionValidator {
 
 	int points;
 
-	public void validate(Solution solution) {
+	public int validate(Solution solution) {
 		for (Vehicle v : solution.getVehicle()) {
 			validateCarRoute(v);
 		}
 		if(Configuration.vehicles < solution.getVehicle().size()){
 			throw new IllegalStateException("To many vehicles");
 		}
+		return points;
 	}
 
 	public void validateCarRoute(Vehicle v) {
