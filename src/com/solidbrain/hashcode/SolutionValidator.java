@@ -14,6 +14,9 @@ public class SolutionValidator {
 		for (Vehicle v : solution.getVehicle()) {
 			validateCarRoute(v);
 		}
+		if(Configuration.vehicles < solution.getVehicle().size()){
+			throw new IllegalStateException("To many vehicles");
+		}
 	}
 
 	private void validateCarRoute(Vehicle v) {
