@@ -9,6 +9,7 @@ public class Main {
 		String path = "resource/input/sample_file_to_be_deleted.in";
 		InputReader inputReader = new InputReader();
 		inputReader.read(path);
+		//ADAM
 
 
 	}
