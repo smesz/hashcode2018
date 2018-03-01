@@ -19,7 +19,7 @@ public class SolutionValidator {
 		}
 	}
 
-	private void validateCarRoute(Vehicle v) {
+	public void validateCarRoute(Vehicle v) {
 		int time = 0;
 		Point carPosition = new Point(0, 0);
 		for (Ride r : v.getRides()) {

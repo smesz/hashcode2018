@@ -10,4 +10,8 @@ public class Solution {
 	public List<Vehicle> getVehicle() {
 		return vehicle;
 	}
+
+	public Solution(List<Vehicle> vehicle) {
+		this.vehicle = vehicle;
+	}
 }
