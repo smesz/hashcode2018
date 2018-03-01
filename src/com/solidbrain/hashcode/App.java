@@ -8,7 +8,8 @@ import com.solidbrain.hashcode.model.Ride;
 
 public class App {
 
-	private static final String CASE_NAME = "a_example";
+//	private static final String CASE_NAME = "c_no_hurry";
+	private static final String CASE_NAME = "d_metropolies";
 
 	private InputReader inputReader = new InputReader();
 	private OutputWriter outputWriter = new OutputWriter();
@@ -18,8 +19,8 @@ public class App {
 		List<Ride> rides = inputReader.read("resource/input/" + CASE_NAME + ".in");
 
 		Solution solution = solutionFinder.findSolution(rides);
-		System.out.println("points : " + new SolutionValidator().validate(solution));
 
 		outputWriter.writeToFile(CASE_NAME, solution);
+		System.out.println("points : " + new SolutionValidator().validate(solution));
 	}
 }

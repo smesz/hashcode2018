@@ -49,7 +49,7 @@ public class Solver implements SolutionFinder {
 			int timeToStartRide = getDistance(car.endCursePosition, ride.start);
 			int waitTime = Math.max(ride.earliestStart - (time + timeToStartRide), 0);
 			int timeRide = getDistance(ride.start, ride.end);
-			car.busyUntil += timeToStartRide + timeRide + waitTime;
+			car.busyUntil = time + timeToStartRide + timeRide + waitTime;
 			car.endCursePosition = new Point(ride.end);
 		}
 
@@ -95,7 +95,7 @@ public class Solver implements SolutionFinder {
 		}
 		score += distance;
 
-		System.out.println("Route " + ride + " score : " + score);
+		//		System.out.println("Route " + ride + " score : " + score);
 		return score;
 	}
 
