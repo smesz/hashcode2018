@@ -10,7 +10,7 @@ public class Main {
 		InputReader inputReader = new InputReader();
 		inputReader.read(path);
 		//ADAM
-
+		//Marek
 
 	}
 
