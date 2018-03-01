@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.solidbrain.hashcode.model.Configuration;
@@ -27,7 +28,7 @@ public class Solver implements SolutionFinder {
 		}
 
 		for (int time = 0; time < Configuration.steps; time++) {
-			if (time % 2000 == 0) {
+			if (time % 3000 == 0) {
 				System.out.println("time " + time);
 			}
 
@@ -45,7 +46,9 @@ public class Solver implements SolutionFinder {
 		Map<Ride, Double> scores = new HashMap<>();
 		for (Ride ride : ridesToTake) {
 			double score = calculateScore(ride, car, time);
-			scores.put(ride, score);
+			if(score > 0.0) {
+				scores.put(ride, score);
+			}
 		}
 		Ride ride = findBest(scores);
 		if (ride != null) {
@@ -62,18 +65,18 @@ public class Solver implements SolutionFinder {
 
 	//dont wait
 	private Ride findBest(Map<Ride, Double> scores) {
-
-		Entry<Ride, Double> maxRide =
-				scores.entrySet().stream().max(Comparator.comparingDouble(Entry::getValue)).get();
-
-		if (maxRide.getValue() > 0) {
-			return maxRide.getKey();
+		if(scores.isEmpty()) {
+			return null;
 		}
-		return null;
+
+		Optional<Entry<Ride, Double>> max =
+				scores.entrySet().parallelStream().max(Comparator.comparingDouble(Entry::getValue));
+
+		return max.get().getKey();
 	}
 
 	private List<Vehicle> getAvailableCars(int time) {
-		return vehicles.stream()
+		return vehicles.parallelStream()
 				.filter(v -> v.busyUntil <= time)
 				.collect(Collectors.toList());
 	}
